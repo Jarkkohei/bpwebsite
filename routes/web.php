@@ -19,3 +19,10 @@ Route::group(['prefix' => config('backpack.base.route_prefix', 'admin'), 'middle
     // Backpack\MenuCRUD
     CRUD::resource('menu-item', 'MenuItemCrudController');
 });
+
+Route::group(['prefix' => config('backpack.base.route_prefix', 'admin'), 'middleware' => ['web', 'auth'], 'namespace' => 'Admin'], function () {
+    // Backpack\NewsCRUD
+    CRUD::resource('article', 'ArticleCrudController');
+    CRUD::resource('category', 'CategoryCrudController');
+    CRUD::resource('tag', 'TagCrudController');
+});
